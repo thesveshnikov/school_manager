@@ -13,8 +13,8 @@ private:
 
 public:
     student(const std::string& name, const std::string& className, const std::string& courseName, int rollNumber, double marks);
-    std::string calculateGrade();
-    void displayInformation();
+    std::string calculateGrade() const;
+    void displayInformation() const;
 };
 
 #endif // STUDENT_H

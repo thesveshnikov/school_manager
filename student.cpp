@@ -4,7 +4,7 @@
 student::student(const std::string& name, const std::string& className, const std::string& courseName, int rollNumber, double marks)
     : name(name), className(className), courseName(courseName), rollNumber(rollNumber), marks(marks) {}
 
-std::string student::calculateGrade() {
+std::string student::calculateGrade() const {
     if (marks >= 90) {
         return "A+";
     } else if (marks >= 80) {
@@ -18,7 +18,7 @@ std::string student::calculateGrade() {
     }
 }
 
-void student::displayInformation() {
+void student::displayInformation() const {
     std::cout << "\nName: " << name << std::endl;
     std::cout << "Class: " << className << std::endl;
     std::cout << "Course: " << courseName << std::endl;
