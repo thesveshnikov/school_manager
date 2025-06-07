@@ -1,5 +1,7 @@
 #include <iostream>
+#include <limits>
 #include "globals.h"
+#include "student_utils.h"
 
 void menu() {
     int option;
@@ -9,7 +11,7 @@ void menu() {
         "Update a student",
         "Delete a student",
         "Find a student",
-        "Show students' counter"
+        "Show students's counter"
     };
 
     do {
@@ -20,6 +22,7 @@ void menu() {
 
         std::cout << "\nChoose an option: ";
         std::cin >> option;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (std::cin.fail()) {
             std::cin.clear();
@@ -34,7 +37,7 @@ void menu() {
 
     switch (option) {
         case 1:
-            std::cout << options[0];
+            createStudent();
             break;
         case 2:
             std::cout << options[1];
