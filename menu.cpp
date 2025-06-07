@@ -7,12 +7,13 @@ void menu() {
         "Register a student",
         "Update a student",
         "Delete a student",
-        "Find a student"
+        "Find a student",
+        "Show students's counter"
     };
 
     std::cout << "\nMenu options:\n\n";
 
-    for (int i = 0; i < 4; i++) {
+    for (int i = 0; i < 5; i++) {
         std::cout << (i + 1) << ". " << choices[i] << "\n";
     }
 
