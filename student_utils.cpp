@@ -3,6 +3,7 @@
 #include <limits>
 #include "student.h"
 #include "student_utils.h"
+#include "globals.h"
 
 void createStudent() {
     std::string studentName;
@@ -10,8 +11,6 @@ void createStudent() {
     std::string courseName;
     int rollNumber;
     double marks;
-
-    int studentsCounter = 0;
 
     std::cout << "Student details: ";
     std::cout << "\nName: ";

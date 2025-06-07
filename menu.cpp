@@ -1,4 +1,5 @@
 #include <iostream>
+#include "globals.h"
 
 void menu() {
     int choice;
@@ -21,4 +22,6 @@ void menu() {
 
     std::cin >> choice;
     std::cout << "You selected option " << choice << std::endl;
+
+    studentsCounter = 0;
 }
