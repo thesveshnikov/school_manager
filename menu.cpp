@@ -9,39 +9,44 @@ void menu() {
         "Update a student",
         "Delete a student",
         "Find a student",
-        "Show students's counter"
+        "Show students' counter"
     };
 
-    std::cout << "\nMenu options:\n\n";
+    do {
+        std::cout << "\nMenu options:\n\n";
+        for (int i = 0; i < 5; ++i) {
+            std::cout << (i + 1) << ". " << options[i] << "\n";
+        }
 
-    for (int i = 0; i < 5; i++) {
-        std::cout << (i + 1) << ". " << options[i] << "\n";
-    }
+        std::cout << "\nChoose an option: ";
+        std::cin >> option;
 
-    std::cout << "\n";
+        if (std::cin.fail()) {
+            std::cin.clear();
+            std::cin.ignore(1000, '\n');
+            option = 0;
+        }
 
-    std::cout << "\nChoose an option: ";
-    std::cin >> option;
+        if (option < 1 || option > 5) {
+            std::cout << "Invalid option. Please try again.\n";
+        }
+    } while (option < 1 || option > 5);
 
     switch (option) {
         case 1:
-            printf(options[0]);
+            std::cout << options[0];
             break;
         case 2:
-            printf(options[1]);
+            std::cout << options[1];
             break;
         case 3:
-            printf(options[2]);
+            std::cout << options[2];
             break;
         case 4:
-            printf(options[3]);
+            std::cout << options[3];
             break;
         case 5:
-            printf(options[4]);
+            std::cout << "Total students: " << studentsCounter << "\n";
             break;
-        default:
-            printf("Invalid option");
     }
-
-    studentsCounter = 0;
 }
