@@ -11,6 +11,8 @@ void createStudent() {
     int rollNumber;
     double marks;
 
+    int studentsCounter = 0;
+
     std::cout << "Student details: ";
     std::cout << "\nName: ";
     std::getline(std::cin, studentName);
@@ -31,4 +33,6 @@ void createStudent() {
 
     student student(studentName, className, courseName, rollNumber, marks);
     student.displayInformation();
+
+    studentsCounter++;
 }
