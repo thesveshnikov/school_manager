@@ -1,6 +1,8 @@
 #include "student_utils.h"
+#include "menu.h"
 
 int main() {
-    createStudent();
+    menu();
+    // createStudent();
     return 0;
 }
