@@ -1,0 +1,6 @@
+#ifndef SHOWSTUDENTSCOUNTER_H
+#define SHOWSTUDENTSCOUNTER_H
+
+void showStudentsCounter();
+
+#endif // SHOWSTUDENTSCOUNTER_H

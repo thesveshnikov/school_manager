@@ -1,6 +1,6 @@
 #include <iostream>
 #include <limits>
-#include "globals.h"
+#include "showStudentsCounter.h"
 #include "student_utils.h"
 
 void menu() {
@@ -11,45 +11,49 @@ void menu() {
         "Update a student",
         "Delete a student",
         "Find a student",
+        "List all students",
         "Show students's counter"
     };
 
     do {
         std::cout << "\nMenu options:\n\n";
-        for (int i = 0; i < 5; ++i) {
+        for (int i = 0; i < 6; ++i) {
             std::cout << (i + 1) << ". " << options[i] << "\n";
         }
 
         std::cout << "\nChoose an option: ";
         std::cin >> option;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 
         if (std::cin.fail()) {
             std::cin.clear();
-            std::cin.ignore(1000, '\n');
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             option = 0;
         }
 
-        if (option < 1 || option > 5) {
+        if (option < 1 || option > 6) {
             std::cout << "Invalid option. Please try again.\n";
         }
-    } while (option < 1 || option > 5);
+
+    } while (option < 1 || option > 6);
 
     switch (option) {
         case 1:
             createStudent();
             break;
         case 2:
-            std::cout << options[1];
+            std::cout << "Update student feature not yet implemented.\n";
             break;
         case 3:
-            std::cout << options[2];
+            std::cout << "Delete student feature not yet implemented.\n";
             break;
         case 4:
-            std::cout << options[3];
+            std::cout << "Find student feature not yet implemented.\n";
             break;
         case 5:
-            std::cout << "Total students: " << studentsCounter << "\n";
+            std::cout << "List students feature not yet implemented.\n";
+            break;
+        case 6:
+            showStudentsCounter();
             break;
     }
 }
