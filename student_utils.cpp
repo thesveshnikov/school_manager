@@ -1,20 +1,21 @@
-#include <iostream>
-#include <string>
-#include <limits>
 #include "student.h"
-#include "student_utils.h"
-#include "globals.h"
+#include <iostream>
+#include <vector>
+#include <limits>
+
+std::vector<student> students;
 
 void createStudent() {
-    std::string studentName;
-    std::string className;
-    std::string courseName;
+    std::string name, className, courseName;
     int rollNumber;
     double marks;
 
-    std::cout << "Student details: ";
-    std::cout << "\nName: ";
-    std::getline(std::cin, studentName);
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+
+    std::cout << "Student details: \n";
+
+    std::cout << "Name: ";
+    std::getline(std::cin, name);
 
     std::cout << "Class: ";
     std::getline(std::cin, className);
@@ -28,10 +29,7 @@ void createStudent() {
     std::cout << "Marks (0-100): ";
     std::cin >> marks;
 
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-
-    student student(studentName, className, courseName, rollNumber, marks);
-    student.displayInformation();
-
-    studentsCounter++;
+    student s(name, className, courseName, rollNumber, marks);
+    students.push_back(s);
+    s.displayInformation();
 }
