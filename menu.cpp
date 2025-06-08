@@ -1,73 +1,64 @@
 #include <iostream>
+#include <vector>
 #include <limits>
-#include "showStudentsCounter.h"
-#include "student_utils.h"
+#include "student.h"
+#include "studentFileOps.h"
+#include "studentManager.h"
 
 void menu() {
-    int option;
-    const char* options[] = {
-        "Register a student",
-        "Update a student",
-        "Delete a student",
-        "Find a student by roll number",
-        "Find a student by first name",
-        "List all students",
-        "List all students of a course",
-        "Show students's counter",
-        "Exit menu"
-    };
+    std::vector<student> students;
+    const std::string filename = "students.txt";
 
-    const int numOptions = sizeof(options) / sizeof(options[0]);
+    loadStudentsFromFile(filename, students);
 
+    int option = 0;
     do {
-        std::cout << "\nMenu Options:\n\n";
-        for (int i = 0; i < numOptions; ++i) {
-            std::cout << (i + 1) << ". " << options[i] << "\n";
-        }
-
-        std::cout << "\nChoose an option: ";
+        std::cout << "\nMenu:\n"
+                  << "1. Add Student\n"
+                  << "2. Update Student\n"
+                  << "3. Delete Student\n"
+                  << "4. List Students by Course\n"
+                  << "5. Save and Exit\n"
+                  << "\nChoose option: ";
         std::cin >> option;
 
-        if (std::cin.fail()) {
-            std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-            option = 0;
-        }
-
-        if (option < 1 || option > numOptions) {
-            std::cout << "Invalid option. Please try again.\n";
-            continue;
-        }
-
-        switch (option) {
+        switch(option) {
             case 1:
-                createStudent();
+                createStudent(students);
                 break;
-            case 2:
-                std::cout << "Update student feature not yet implemented\n";
+            case 2: {
+                std::cout << "Enter roll number to update: ";
+                int roll;
+                std::cin >> roll;
+                std::cin.ignore();
+                updateStudent(students, roll);
                 break;
-            case 3:
-                std::cout << "Delete student feature not yet implemented\n";
+            }
+            case 3: {
+                std::cout << "Enter roll number to delete: ";
+                int roll;
+                std::cin >> roll;
+                if (deleteStudent(students, roll)) {
+                    std::cout << "Student deleted.\n";
+                } else {
+                    std::cout << "Student not found.\n";
+                }
                 break;
-            case 4:
-                std::cout << "Find student by roll number feature not yet implemented\n";
+            }
+            case 4: {
+                std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+                std::cout << "Enter course name to list students: ";
+                std::string course;
+                std::getline(std::cin, course);
+                listStudentsByCourse(students, course);
                 break;
+            }
             case 5:
-                std::cout << "Find student by first name feature not yet implemented\n";
+                saveStudentsToFile(filename, students);
+                std::cout << "Data saved. Exiting...\n";
                 break;
-            case 6:
-                std::cout << "List all students feature not yet implemented\n";
-                break;
-            case 7:
-                std::cout << "List all students of a course feature not yet implemented\n";
-                break;
-            case 8:
-                showStudentsCounter();
-                break;
-            case 9:
-                std::cout << "Exiting\n";
-                break;
+            default:
+                std::cout << "Invalid option!\n";
         }
-
-    } while (option != 9);
+    } while(option != 5);
 }

@@ -2,19 +2,23 @@
 #define STUDENT_H
 
 #include <string>
+#include <iostream>
 
 class student {
-private:
+public:
     std::string name;
     std::string className;
     std::string courseName;
     int rollNumber;
     double marks;
 
-public:
-    student(const std::string& name, const std::string& className, const std::string& courseName, int rollNumber, double marks);
+    student();
+    student(const std::string& name, const std::string& className,
+            const std::string& courseName, int rollNumber, double marks);
+
     std::string calculateGrade() const;
+
     void displayInformation() const;
 };
 
-#endif // STUDENT_H
+#endif
