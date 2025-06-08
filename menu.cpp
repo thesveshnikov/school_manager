@@ -5,19 +5,21 @@
 
 void menu() {
     int option;
-
     const char* options[] = {
         "Register a student",
         "Update a student",
         "Delete a student",
-        "Find a student",
+        "Find a student by roll number",
+        "Find a student by first name",
         "List all students",
-        "Show students's counter"
+        "Show students' counter"
     };
 
+    const int numOptions = sizeof(options) / sizeof(options[0]);
+
     do {
-        std::cout << "\nMenu options:\n\n";
-        for (int i = 0; i < 6; ++i) {
+        std::cout << "\nMenu Options:\n\n";
+        for (int i = 0; i < numOptions; ++i) {
             std::cout << (i + 1) << ". " << options[i] << "\n";
         }
 
@@ -30,29 +32,32 @@ void menu() {
             option = 0;
         }
 
-        if (option < 1 || option > 6) {
+        if (option < 1 || option > numOptions) {
             std::cout << "Invalid option. Please try again.\n";
         }
 
-    } while (option < 1 || option > 6);
+    } while (option < 1 || option > numOptions);
 
     switch (option) {
         case 1:
             createStudent();
             break;
         case 2:
-            std::cout << "Update student feature not yet implemented.\n";
+            std::cout << "Update student feature not yet implemented\n";
             break;
         case 3:
-            std::cout << "Delete student feature not yet implemented.\n";
+            std::cout << "Delete student feature not yet implemented\n";
             break;
         case 4:
-            std::cout << "Find student feature not yet implemented.\n";
+            std::cout << "Find student by roll number feature not yet implemented\n";
             break;
         case 5:
-            std::cout << "List students feature not yet implemented.\n";
+            std::cout << "Find student by first name feature not yet implemented\n";
             break;
         case 6:
+            std::cout << "List all students feature not yet implemented\n";
+            break;
+        case 7:
             showStudentsCounter();
             break;
     }
