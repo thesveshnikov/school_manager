@@ -12,7 +12,8 @@ void menu() {
         "Find a student by roll number",
         "Find a student by first name",
         "List all students",
-        "Show students' counter",
+        "List all students of a course",
+        "Show students's counter",
         "Exit menu"
     };
 
@@ -58,12 +59,15 @@ void menu() {
                 std::cout << "List all students feature not yet implemented\n";
                 break;
             case 7:
-                showStudentsCounter();
+                std::cout << "List all students of a course feature not yet implemented\n";
                 break;
             case 8:
+                showStudentsCounter();
+                break;
+            case 9:
                 std::cout << "Exiting\n";
                 break;
         }
 
-    } while (option != 8);
+    } while (option != 9);
 }
