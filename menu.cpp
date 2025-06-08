@@ -12,7 +12,8 @@ void menu() {
         "Find a student by roll number",
         "Find a student by first name",
         "List all students",
-        "Show students' counter"
+        "Show students' counter",
+        "Exit menu"
     };
 
     const int numOptions = sizeof(options) / sizeof(options[0]);
@@ -34,31 +35,35 @@ void menu() {
 
         if (option < 1 || option > numOptions) {
             std::cout << "Invalid option. Please try again.\n";
+            continue;
         }
 
-    } while (option < 1 || option > numOptions);
+        switch (option) {
+            case 1:
+                createStudent();
+                break;
+            case 2:
+                std::cout << "Update student feature not yet implemented\n";
+                break;
+            case 3:
+                std::cout << "Delete student feature not yet implemented\n";
+                break;
+            case 4:
+                std::cout << "Find student by roll number feature not yet implemented\n";
+                break;
+            case 5:
+                std::cout << "Find student by first name feature not yet implemented\n";
+                break;
+            case 6:
+                std::cout << "List all students feature not yet implemented\n";
+                break;
+            case 7:
+                showStudentsCounter();
+                break;
+            case 8:
+                std::cout << "Exiting\n";
+                break;
+        }
 
-    switch (option) {
-        case 1:
-            createStudent();
-            break;
-        case 2:
-            std::cout << "Update student feature not yet implemented\n";
-            break;
-        case 3:
-            std::cout << "Delete student feature not yet implemented\n";
-            break;
-        case 4:
-            std::cout << "Find student by roll number feature not yet implemented\n";
-            break;
-        case 5:
-            std::cout << "Find student by first name feature not yet implemented\n";
-            break;
-        case 6:
-            std::cout << "List all students feature not yet implemented\n";
-            break;
-        case 7:
-            showStudentsCounter();
-            break;
-    }
+    } while (option != 8);
 }
